@@ -1,10 +1,13 @@
-import { FETCH_DATA, FETCH_DATA_FAILURE, FETCH_DATA_SUCCESS } from "./actiontypes"
+import { ADD_PRODUCT, FETCH_DATA, FETCH_DATA_FAILURE, FETCH_DATA_SUCCESS } from "./actiontypes"
 import { combineReducers } from "redux"
 
 let initialstate={
     data:[],
     loading: false,
     error: "",
+}
+let initialcart={
+    cartitems:[]
 }
 
 const datareducer=(state=initialstate, action)=>{
@@ -25,11 +28,25 @@ const datareducer=(state=initialstate, action)=>{
                 loading: false,
                 error: state.error+ action.payload
             }
+        
         default:
             return state
     }
 }
+const cartreducer=(state= initialcart, action)=>{
+    switch(action.type){
+        case ADD_PRODUCT:
+            return{
+               ...state,
+               data: action.payload 
+            }
+        default: 
+        return state
+    }
+
+}
 const rootreducer=combineReducers({
     data: datareducer,
+    cart: cartreducer
 })
 export default rootreducer

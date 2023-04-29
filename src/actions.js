@@ -18,6 +18,12 @@ export const fetch_data_failure=(error)=>{
         payload: error
     }
 }
+export const addproduct=(data)=>{
+    return {
+        type: "ADD_PRODUCT",
+        payload: data
+    }
+}
 export const fetchingdata=()=>async (dispatch)=>{
     dispatch(fetchdata())
     try{

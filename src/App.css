@@ -3,9 +3,48 @@
   grid-template-columns: repeat(4, 25%);
   grid-gap: 10px
 }
+.header{
+  background-color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+}
+.right{
+  display: flex;
+  
+}
+.right p{
+  padding: 10px;
+}
 .imagestyling{
   width: 200px;
   margin: auto;
   padding: 6px 19px;
+  max-width: 50%;
  
+}
+.eachstyling{
+  border: 1px solid black;
+  width: 250px;
+  gap: 5px
+}
+@media (max-width: 1024px){
+  .total{
+    grid-template-columns: repeat(3, 33.33%);
+  }
+}
+@media (max-width: 768px){
+  .total{
+    grid-template-columns: repeat(2, 50%);
+  }
+}
+@media (max-width: 480px){
+  .total{
+    grid-template-columns: repeat(1, 100%);
+    
+  }
+  .eachstyling{
+    margin: auto;
+  }
 }

@@ -1,12 +1,8 @@
 import { useSelector, useDispatch } from "react-redux";
-import { fetchingdata } from "./actions";
+import { fetchingdata, addproduct } from "./actions";
 import { useEffect } from "react";
 import styles from "./App.css"
-let eachstyling={
-  border: "1px solid black",
-  width: "250px",
-  gap: "5px"
-}
+
 
 
 const App=()=>{
@@ -30,17 +26,20 @@ useEffect(()=>{
 return(
   <div>
     <div className="header">
-      <h1>Shopping Cart</h1>
-      
+      <p>ShoppingCart</p>
+      <div className="right">
+        <p>HomePage</p>
+        <p>CartPage</p>
+      </div>
     </div>
   <div className="total">
     {
       data.map((eachdata, index)=>
-      <div style={eachstyling}>        
+      <div className="eachstyling">        
         <img src={eachdata.images[0]} alt="image" className="imagestyling"></img> 
         <p>Title: {eachdata.title}</p>  
         <p>Price:$ {eachdata.price}</p>    
-        <button style={{backgroundColor:"black", color: "white", width: "100%"}}>Add to cart</button> 
+        <button onClick={dispatch(addproduct(eachdata))} style={{backgroundColor:"black", color: "white", width: "100%"}}>Add to cart</button> 
         </div>
       )
     }
