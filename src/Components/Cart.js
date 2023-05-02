@@ -2,25 +2,36 @@ import React from 'react'
 import store from '../store'
 import { useSelector, useDispatch } from 'react-redux';
 import styles from "../App.css"
-import { checkout } from '../actions';
+import { addproduct, checkout, removesitem } from '../actions';
 function Cart() {
-  console.log("Initial state is", store.getState());
+  //console.log("Initial state is", store.getState());
   const cartlist= useSelector((state)=>state.cart.cartitems)
+  console.log(cartlist);
   const dispatch=useDispatch()
   function dispatching(cartlist){
-    cartlist=[]
     console.log(cartlist);
+    // while(cartlist!=[]){
+    //   cartlist.pop()
+    // }
+    
+    dispatch(checkout(cartlist))
   }  
+  function removeitem(eachdata){
+    dispatch(removesitem(eachdata))
+  }
 
   return (
+    cartlist==[]?(console.log("empty")):
+    (
     <div>
       <div className='displayelements'>{
         cartlist.map((eachdata, index)=>(
           <div className="eachstyling">        
-          <img src={eachdata.images[0]} alt="image" className="imagestyling"></img> 
+          <img src={eachdata.images[0]} alt="image" className="imagestyling" key={index}></img> 
           <p>Title: {eachdata.title}</p>  
           <p>Price:$ {eachdata.price}</p>    
-          <button style={{backgroundColor:"black", color: "white", width: "100%", height: "30px"}}>Remove from cart</button> 
+          <button onClick={()=>removeitem(eachdata)}
+          style={{backgroundColor:"black", color: "white", width: "100%", height: "30px"}}>Remove from cart</button> 
       </div>
       ))}
      </div>
@@ -33,10 +44,10 @@ function Cart() {
               </div>              
             ) )
           }
-          <button onClick={(cartlist)=>dispatching(cartlist)}>Checkout</button>
+          <button onClick={()=>dispatching(cartlist)}>Checkout</button>
       </div>
     </div>
-  )
+  ))
 }
 
   

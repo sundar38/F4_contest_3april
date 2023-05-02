@@ -1,4 +1,4 @@
-import { ADD_PRODUCT, CHECKOUT_ITEMS, FETCH_DATA, FETCH_DATA_FAILURE, FETCH_DATA_SUCCESS } from "./actiontypes"
+import { ADD_PRODUCT, CHECKOUT_ITEMS, FETCH_DATA, FETCH_DATA_FAILURE, FETCH_DATA_SUCCESS, REMOVE_ITEM } from "./actiontypes"
 import { combineReducers } from "redux"
 
 let initialstate={
@@ -43,7 +43,12 @@ const cartreducer=(state= initialcart, action)=>{
         case CHECKOUT_ITEMS:
             return{
                 ...state,
-                cartitems: action.payload.filter((item)=> item=="")
+                cartitems: state.cartitems.filter((item)=> item=="")
+            }
+        case REMOVE_ITEM:
+            return{
+                ...state,
+                cartitems: state.cartitems.filter((item)=> item.id!=action.payload.id)
             }
         default: 
         return state

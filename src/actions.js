@@ -30,6 +30,12 @@ export const addproduct=(data)=>{
         payload: data
     }
 }
+export const removesitem=(data)=>{
+    return{
+        type: "REMOVE_ITEM",
+        payload: data
+    }
+}
 export const fetchingdata=()=>async (dispatch)=>{
     dispatch(fetchdata())
     try{

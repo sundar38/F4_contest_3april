@@ -14,8 +14,8 @@ function Navbar() {
     <div className='header'>
         <h1>Shopping Cart</h1>
         <div className='right' style={parent}>
-           <Link to="/" style={navstyles}>Homepage</Link>
-            <Link to="/cart" style={navstyles}>Cartpage</Link>
+           <Link to="/" style={navstyles}>HomePage</Link>
+            <Link to="/cart" style={navstyles}>CartPage</Link>
         </div>
     </div>
   )
