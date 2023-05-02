@@ -18,6 +18,12 @@ export const fetch_data_failure=(error)=>{
         payload: error
     }
 }
+export const checkout=(cartlist)=>{
+    return {
+        type: "CHECKOUT_ITEMS",
+        payload: cartlist
+    }
+}
 export const addproduct=(data)=>{
     return {
         type: "ADD_PRODUCT",
